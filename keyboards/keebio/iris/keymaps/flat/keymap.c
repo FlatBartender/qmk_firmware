@@ -5,6 +5,11 @@
 
 enum layers {
 	_MAIN = 0,
+	_FFXIV,
+	_FFXIV_2,
+	_FFXIV_3,
+	_VALORANT,
+	_ARROWS,
 	_DVORAK,
 	_GAME,
 	_ADJUST,
@@ -20,8 +25,13 @@ enum layers {
 #define TEMP_DV LT(_TEMP_DV, OSL(_TEMP_DV))
 #define GAME DF(_GAME)
 #define ADJUST DF(_ADJUST)
+#define ARROWS MO(_ARROWS)
 #define MEDIA DF(_MEDIA)
 #define MAIN DF(_MAIN)
+#define FFXIV DF(_FFXIV)
+#define VALORAN DF(_VALORANT)
+#define OTHERS MO(_FFXIV_2)
+#define OTHERS2 MO(_FFXIV_3)
 #define LEADER OSL(_LEADER)
 
 #define ALGRDLR ALGR_T(FR_DLR)
@@ -33,15 +43,6 @@ enum layers {
 #define RPRN ALT_T(DV_RPRN)
 #define DV_LESS LSFT(DV_COMM)
 #define DV_GRTR LSFT(DV_DOT)
-
-
-enum custom_keycodes {
-  M_VAPOR = SAFE_RANGE,
-  M_FLOWER,
-  M_QUEEN,
-  M_SNAKE,
-  M_SHOUB,
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -58,12 +59,82 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     LEADER,  ALTCIRC, KC_ENT,                    KC_SPC,  ALGRDLR, TEMP
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
+  
+ [_FFXIV] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     WARP,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            C(KC_1), C(KC_2), C(KC_3), C(KC_4), C(KC_5), C(KC_6),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼───────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            C(KC_7), C(KC_8), C(KC_9), C(KC_0), C(KC_MINS),C(KC_EQL),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          KC_ESC,  KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    LEADER,  XXXXXXX, XXXXXXX,                   OTHERS,  ARROWS,  OTHERS2 
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
 
-  [_DVORAK] = LAYOUT(
+ [_FFXIV_2] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            A(KC_1), A(KC_2), A(KC_3), A(KC_4), A(KC_5), A(KC_6),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼───────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            A(KC_7), A(KC_8), A(KC_9), A(KC_0), A(KC_MINS),A(KC_EQL),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6),
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼───────┤─┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, S(KC_7), S(KC_8), S(KC_9), S(KC_0), S(KC_MINS),S(KC_EQL),
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX 
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+[_FFXIV_3] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            MEH(KC_1), MEH(KC_2), MEH(KC_3), MEH(KC_4), MEH(KC_5), MEH(KC_6),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼───────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            MEH(KC_7), MEH(KC_8), MEH(KC_9), MEH(KC_0), MEH(KC_MINS), MEH(KC_EQL),
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            LCA(KC_1), LCA(KC_2), LCA(KC_3), LCA(KC_4), LCA(KC_5), LCA(KC_6),
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼───────┤─┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, LCA(KC_7), LCA(KC_8), LCA(KC_9), LCA(KC_0), LCA(KC_MINS), LCA(KC_EQL),
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX 
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+[_VALORANT] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_1,    KC_2,    KC_3,    KC_4,    KC_DEL,  XXXXXXX,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            FR_Q,    KC_E,    KC_C,    KC_X,    FR_COMM, KC_TAB, 
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_F,    KC_T,    FR_W,    FR_Z,    FR_COLN, FR_M, 
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          KC_ESC,  KC_R,    FR_A,    KC_S,    KC_D,    KC_SPC,  KC_B, 
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    LEADER,  XXXXXXX, XXXXXXX,                   KC_LCTL, KC_LSFT, KC_V 
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+ [_ARROWS] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            A(KC_D), A(KC_E), A(FR_A), A(KC_G), XXXXXXX, XXXXXXX,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            FR_M,    KC_P,    KC_I,    KC_J,    KC_U,    XXXXXXX,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            KC_T,    KC_DEL,  KC_UP,   C(KC_P2), C(KC_P8), C(KC_U),
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, S(KC_F), KC_LEFT, KC_DOWN, KC_RGHT, KC_P0,   FR_W,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX 
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+ [_DVORAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  DV_1,    DV_2,    DV_3,    DV_4,    DV_5,                               DV_6,    DV_7,    DV_8,    DV_9,    DV_0,    KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  DV_QUOT, DV_COMM, DV_DOT,  DV_P,    DV_Y,                               DV_F,    DV_G,    DV_C,    DV_R,    DV_L,    DB_BSLS,
+     KC_TAB,  DV_QUOT, DV_COMM, DV_DOT,  DV_P,    DV_Y,                               DV_F,    DV_G,    DV_C,    DV_R,    DV_L,    DV_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, DV_A,    DV_O,    DV_E,    DV_U,    DV_I,                               DV_D,    DV_H,    DV_T,    DV_N,    DV_MINS, DV_SLSH,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -77,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      ADJUST,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX, MAIN,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     XXXXXXX, MAIN,    FFXIV,   VALORAN, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -178,4 +249,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			break;
 	}
 	return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+	switch (get_highest_layer(state)) {
+		case _FFXIV:
+			rgblight_sethsv(28, 255, 64);
+			break;
+		case _FFXIV_2:
+			rgblight_sethsv(28, 128, 64);
+			break;
+		case _FFXIV_3:
+			rgblight_sethsv(28, 64, 64);
+			break;
+		case _ARROWS:
+			rgblight_sethsv(28, 192, 64);
+			break;
+		case _MAIN:
+			rgblight_sethsv(64, 255, 64);
+			break;
+		case _WARP:
+			rgblight_sethsv(0, 255, 128);
+			break;
+		case _LEADER:
+			rgblight_sethsv(64, 128, 64);
+			break;
+		default: //  for any other layers, or the default layer
+			rgblight_sethsv(0, 0, 0);
+			break;
+	}
+	return state;
 }
